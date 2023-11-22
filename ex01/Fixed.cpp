@@ -7,6 +7,15 @@ Fixed::Fixed()
 	
 }
 
+Fixed::Fixed(const int x)
+{
+	this->fixed_p = x * ft_iterative_power(2, frac);
+}
+Fixed::Fixed(const float z)
+{
+	this->fixed_p = roundf(z * ft_iterative_power(2, frac));
+}
+
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
@@ -33,4 +42,13 @@ int Fixed::getRawBits() const
 void Fixed::setRawBits( int const raw )
 {
 	this->fixed_p = raw;
+}
+float Fixed::toFloat()const
+{
+	return this->fixed_p / ft_iterative_power(2, frac);
+};
+
+int Fixed::toInt( void ) const
+{
+	return this->fixed_p / ft_iterative_power(2, frac);
 }
