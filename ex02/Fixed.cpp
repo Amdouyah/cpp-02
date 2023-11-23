@@ -26,15 +26,55 @@ Fixed::~Fixed()
 Fixed::Fixed(const Fixed &new_fixed)
 {
 	*this = new_fixed;
-	std::cout <<"copy constructor called"<< std::endl;
+	std::cout << "copy constructor called"<< std::endl;
 }
 
 Fixed &Fixed::operator =(const Fixed &new_fixed)
 {
 	fixed_p = new_fixed.getRawBits();
-	std::cout <<"Copy assignment operator called"<<std::endl;
 	return *this;
 }
+
+Fixed &Fixed::operator +(const Fixed &new_fixed)
+{
+	fixed_p += new_fixed.getRawBits();
+	return *this;
+}
+Fixed &Fixed::operator -(const Fixed &new_fixed)
+{
+	fixed_p -= new_fixed.getRawBits();
+	return *this;
+}
+Fixed &Fixed::operator *(const Fixed &new_fixed)
+{
+	fixed_p *= new_fixed.getRawBits();
+	return *this;
+}
+Fixed &Fixed::operator /(const Fixed &new_fixed)
+{
+	fixed_p /= new_fixed.getRawBits();
+	return *this;
+}
+
+bool Fixed::operator <(const Fixed &new_fixed){
+	return(fixed_p < new_fixed.getRawBits);
+}
+bool Fixed::operator >(const Fixed &new_fixed){
+	return(fixed_p > new_fixed.getRawBits);
+}
+bool Fixed::operator <=(const Fixed &new_fixed){
+	return(fixed_p <= new_fixed.getRawBits);
+}
+bool Fixed::operator >=(const Fixed &new_fixed){
+	return(fixed_p >= new_fixed.getRawBits);
+}
+bool Fixed::operator ==(const Fixed &new_fixed){
+	return(fixed_p == new_fixed.getRawBits);
+}
+bool Fixed::operator !=(const Fixed &new_fixed){
+	return(fixed_p != new_fixed.getRawBits);
+}
+
 int Fixed::getRawBits() const
 {
 	return fixed_p;
